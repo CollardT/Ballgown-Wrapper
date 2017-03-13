@@ -1,0 +1,21 @@
+<tool id="ballgown_tool" name="Ballgown" version="0.5.0">
+  <description>It work I think</description>
+  <command>Rscript /local_tools/ballgownWrapper/ballgown_tool.R $input1 $input2 $output</command>
+  <inputs>
+    <param type="data" name="input1" format="csv"/>
+    <param type="data" name="input2" multiple="TRUE"/>
+  </inputs>
+  <outputs>
+    <data format="csv" name="output" />
+  </outputs>
+  <tests>
+      <test>
+      <param name="inputcsv" value="phenodata.csv" />
+      <param name="inputdata" />
+      <output name="output" file="output.csv"/>
+    </test>
+  </tests>
+  <help>
+    This tool does stuff I guess, I mean Idk.
+  </help>
+</tool>
