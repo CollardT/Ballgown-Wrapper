@@ -1,5 +1,13 @@
 <tool id="ballgown_tool" name="Ballgown" version="0.5.0">
   <description>It work I think</description>
+  <stdio>
+    <exit_code range="1:" />
+  </stdio>
+  <!-- Requirements for the tool to work (here ballgown and R) -->
+  <requirements>
+        <requirement type="package" version="3.1.2">R</requirement>
+        <requirement type="package" version="1.0.3">ballgown</requirement>
+  </requirements>
   <command>Rscript /local_tools/ballgownWrapper/ballgown_tool.R $input1 $input2 $output</command>
   <inputs>
     <param type="data" name="input1" format="csv"/>
