@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
-library("ballgown")
+#library("ballgown")
+library(ballgown)
 
 args = commandArgs(trailingOnly = TRUE)
 
