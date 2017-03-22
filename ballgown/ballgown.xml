@@ -1,0 +1,48 @@
+<tool id="ballgown" name="Ballgown" version="0.5.0" workflow_compatible="true">
+  <description>Flexible, isoform-level differential expression analysis</description>
+  <requirements>
+				<requirement type="package" version="2.2.0">bioconductor-ballgown</requirement>
+  </requirements>
+  <command interpreter="Rscript">
+		ballgown.R $input1 $input2 $output</command>
+  <inputs>
+    <param name="input1" type="data" format="csv" label="Data 1" help="Some help here"/>
+    <param name="input2" type="data" multiple="true" label="Data 2" help="Some help here"/>
+  </inputs>
+  <outputs>
+    <data name="output" format="csv" file="output.csv"/>
+  </outputs>
+  <tests>
+      <test>
+      <param name="inputcsv" value="phenodata.csv" />
+      <param name="inputdata" />
+      <output name="output" format="csv" file="output.csv"/>
+    </test>
+  </tests>
+  <help>
+
+=======================
+Ballgown
+=======================
+**What it does**
+This tool does stuff I guess, I mean Idk.
+
+----
+
+**How to use**
+
+Blablabla
+
+.. class:: infomark
+
+'''TIP''' *Note* trolololo
+
+-----
+
+**Authors**: Theo Collard[SLU Global Bioinformatics Centre], Rafael Hernández de Diego [SLU Global Bioinformatics Centre], and Thomas Klingström [SLU Global Bioinformatics Centre]
+
+Sources are available at https://github.com/CollardT/Ballgown-Wrapper
+
+
+  </help>
+</tool>

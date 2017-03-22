@@ -1,3 +1,6 @@
-<section id="textutil" name="Text Manipulation">
-		<tool file="/local_tools/ballgownWrapper/ballgownWrapper.xml"/>
-</section>
+<?xml version='1.0' encoding='utf-8'?>
+<toolbox>
+    <section id="send" name="Send Data">
+       <tool file="/local_tools/ballgown/ballgown.xml" />
+    </section>
+</toolbox>

@@ -1,24 +1,37 @@
-#!/usr/bin/env Rscript
+#!/usr/bin/Rscript
 
 #library("ballgown")
+getwd()
 library(ballgown)
 
 args = commandArgs(trailingOnly = TRUE)
-
+class(args[2])
+typeof(args[2])
+args[2]
+files <- strsplit(args[2],",")[[1]]
+files
+is.atomic(files)
+class(files)
+typeof(files)
+vecf <- c(files)
+vecf
+class(vecf)
+typeof(vecf)
+is.atomic(vecf)
 # fileConn<-file(args[2])
 # writeLines(c(paste('<body style="background-color:red">',args[1],'</body>')), fileConn)
 # close(fileConn)
 #
 
 phendata = read.csv(args[1])
-write.csv(phendata, file = args[2])
+#write.csv(phendata, file = args[2])
 filtstr = 0.5
 pdat = 2
 out="results"
 
 # Creation of the ballgown object based on data
 # ----------------------------------------------------------------------------------------
-bgi = ballgown(samples= args[2] , pData = phendata)
+bgi = ballgown(samples= vecf, pData = phendata)
 
 # #bgi = ballgown(dataDir = , samplePattern = , pData = phendata)
 
