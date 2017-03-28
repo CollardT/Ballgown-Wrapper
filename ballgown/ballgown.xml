@@ -3,11 +3,27 @@
   <requirements>
 				<requirement type="package" version="2.2.0">bioconductor-ballgown</requirement>
   </requirements>
-  <command interpreter="Rscript">
-		ballgown.R $input1 $input2 $output</command>
+  <command><![CDATA[
+  #for $i, $s in enumerate($samples)
+    mkdir sample$i &&
+    ln -s '${s.e2t}' sample$i/e2t.ctab &&
+    ln -s '${s.i2t}' sample$i/i2t.ctab &&
+    ln -s '${s.i_data}' sample$i/i_data.ctab &&
+    ln -s '${s.t_data}' sample$i/t_data.ctab &&
+    ln -s '${s.e_data}' sample$i/e_data.ctab &&
+  #end for
+  Rscript /local_tools/ballgown/ballgown.R $phendata
+  ]]>
+  </command>
   <inputs>
-    <param name="input1" type="data" format="csv" label="Data 1" help="Some help here"/>
-    <param name="input2" type="data" multiple="true" label="Data 2" help="Some help here"/>
+    <repeat name="samples" title="Samples">
+          <param name="e2t" type="data" format="tabular" label="Exon to transcript" />
+          <param name="i2t" type="data" format="tabular" label="Intron to transcript" />
+          <param name="e_data" type="data" format="tabular" label="Exon level expression measurement" />
+          <param name="i_data" type="data" format="tabular" label="Intron level expression measurement" />
+          <param name="t_data" type="data" format="tabular" label="transcript level expression measurement" />
+    </repeat>
+    <param name="phendata" type="data" format="csv" label="phenotype data" />
   </inputs>
   <outputs>
     <data name="output" format="csv" file="output.csv"/>
