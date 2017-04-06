@@ -3,6 +3,8 @@
   <requirements>
     <requirement type="package" version="2.2.0">bioconductor-ballgown</requirement>
     <requirement type="package" version="0.5.0">r-dplyr</requirement>
+    <requirement type="package" version="1.3.2">r-optparse</requirement>
+
   </requirements>
   <command interpreter="Rscript">
 		##------------------------------------------------------------------------------------
@@ -125,7 +127,7 @@
 		#end for
 
 		## Run the R script with the location of the linked files and the name for outpot file
-		ballgown.R $phendata $output.files_path $output $outputgn
+		ballgown.R --directory $output.files_path --outputtranscript $output --outputgenes $outputgn --texpression $trexpression --phendat $phendata
 	</command>
   <inputs>
     <param name="e_data" type="data" multiple="true" format="tabular" label="Exon-level expression measurements" help="One row per exon. See below for more details."/>
@@ -134,7 +136,8 @@
 		<param name="e2t" type="data" multiple="true" format="tabular" label="Exons-transcripts mapping" help="Table with two columns, e_id and t_id, denoting which exons belong to which transcripts. See below for more details."/>
 		<param name="i2t" type="data" multiple="true" format="tabular" label="Introns-transcripts mapping" help="Table with two columns, i_id and t_id, denoting which introns belong to which transcripts. See below for more details."/>
 		<param name="samples_names" type="data" optional="true" multiple="false" format="tabular" label="File names for samples" help="Optional. Use in case that the names for the analysed samples cannot be extracted from the filenames."/>
-    <param name="phendata" type="data" format="csv" label="phenotype data" />
+    <param argument="--phendat" name="phendata" type="data" format="csv" label="phenotype data" />
+    <param argument="--texpression" name="trexpression" type="float" value="0.5" label="minimal transcript expression to appear in the results" />
   </inputs>
   <outputs>
     <data name="output" format="csv" file="output_transcript.csv"/>
