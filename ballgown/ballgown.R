@@ -51,7 +51,6 @@ bgi_filt= subset(bgi, paste("rowVars(texpr(bgi)) >",filtstr), genomesubset = TRU
 # Checking if there's one or more adjust variables in the phenotype data file
 # ----------------------------------------------------------------------------------------
 
-
 if (ncol(pData(bgi)))<=3
 {
   results_transcripts=stattest(bgi_filt,feature = "transcript", covariate = colnames(pData(bgi))[pdat], adjustvars = colnames(pData(bgi)[pdat+1]), getFC = TRUE, meas = "FPKM")
@@ -59,8 +58,8 @@ if (ncol(pData(bgi)))<=3
 }
 else
 {
-  results_transcripts=stattest(bgi_filt,feature = "transcript", covariate = colnames(pData(bgi))[pdat], adjustvars = colnames(pData(bgi)[pdat+1:ncol(pData(bgi))]), getFC = TRUE, meas = "FPKM")
-  results_genes=stattest(bgi_filt,feature = "gene", covariate = colnames(pData(bgi))[pdat], adjustvars = colnames(pData(bgi)[pdat+1:ncol(pData(bgi))]), getFC = TRUE, meas = "FPKM")
+  results_transcripts=stattest(bgi_filt,feature = "transcript", covariate = colnames(pData(bgi))[pdat], adjustvars = c(colnames(pData(bgi)[pdat+1:ncol(pData(bgi))])), getFC = TRUE, meas = "FPKM")
+  results_genes=stattest(bgi_filt,feature = "gene", covariate = colnames(pData(bgi))[pdat], adjustvars = c(colnames(pData(bgi)[pdat+1:ncol(pData(bgi))])), getFC = TRUE, meas = "FPKM")
 }
 
 results_transcripts = data.frame(geneNames=ballgown::geneNames(bgi_filt), geneIDs=ballgown::geneIDs(bgi_filt), results_transcripts)
@@ -69,7 +68,5 @@ results_genes = arrange(results_genes,pval)
 
 # Main output of the wrapper, two .csv files containing the genes and transcripts with their qvalue and pvalue
 # ----------------------------------------------------------------------------------------
-"1"
 write.csv(results_transcripts, opt$outputtranscript, row.names = FALSE)
 write.csv(results_genes, opt$outputgenes, row.names = FALSE)
-"2"

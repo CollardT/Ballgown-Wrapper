@@ -192,9 +192,26 @@ The input for this tools consists on 5 files for each sample in your experiment:
 
 .. class:: infomark
 
-'''TIP''' *Note* trolololo
+'''TIP''' *Note* Here's an example of a good phenotype data file for your expirement.
 
------
++--------------+-------+-------+
+|ids           |var 1  |var 2  |
++==============+=======+=======+
+|sample 1      |value 1|value 2|
++--------------+-------+-------+
+|sample 2      |value 2|value 1|
++--------------+-------+-------+
+|sample 3      |value 1|value 2|
++--------------+-------+-------+
+|sample 4      |value 2|value 1|
++--------------+-------+-------+
+
+.. class:: infomark
+
+*Note* The minimal transcript expression is a number used to filter the transcripts that 
+are less or not expressed in our samples when compared to the genome
+
+----
 
 **Authors**: Théo Collard [SLU Global Bioinformatics Centre], Rafael Hernández de Diego [SLU Global Bioinformatics Centre], and Tomas Klingström [SLU Global Bioinformatics Centre]
 
