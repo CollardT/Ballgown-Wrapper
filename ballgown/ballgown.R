@@ -6,11 +6,12 @@
 
 suppressMessages(library(optparse, warn.conflicts = FALSE))
 opt_list=list(
-make_option(c("-dir", "--directory"), type="character", default=NULL, help="directory containing the samples", metavar="character"),
-make_option(c("-pda", "--phendat"), type="character", default=NULL, help="phenotype data(must be a .csv file)", metavar="character"),
-make_option(c("-otr","--outputtranscript"), type="character", default="output_transcript.csv", help="output_transcript.csv: contains the transcripts of the expirements", metavar="character"),
-make_option(c("-ogn","--outputgenes"), type="character", default="output_genes.csv", help="output_genes.csv: contains the genes of the expirements", metavar="character"),
-make_option(c("-tex","--texpression"), type="double", default="0.5", help="transcripts expression filter", metavar="character")
+make_option(c("-d", "--directory"), type="character", default=NULL, help="directory containing the samples", metavar="character"),
+make_option(c("-p", "--phendat"), type="character", default=NULL, help="phenotype data(must be a .csv file)", metavar="character"),
+make_option(c("-t","--outputtranscript"), type="character", default="output_transcript.csv", help="output_transcript.csv: contains the transcripts of the expirements", metavar="character"),
+make_option(c("-g","--outputgenes"), type="character", default="output_genes.csv", help="output_genes.csv: contains the genes of the expirements", metavar="character"),
+make_option(c("-e","--texpression"), type="double", default="0.5", help="transcripts expression filter", metavar="character"),
+make_option(c("--bgout"), type="character", default="", help="save the ballgown object created in the process", metavar="character")
 )
 opt_parser=OptionParser(option_list=opt_list)
 opt=parse_args(opt_parser)
@@ -67,3 +68,6 @@ results_genes = arrange(results_genes,pval)
 # ----------------------------------------------------------------------------------------
 write.csv(results_transcripts, opt$outputtranscript, row.names = FALSE)
 write.csv(results_genes, opt$outputgenes, row.names = FALSE)
+if (opt$bgout != ""){
+  save(bgi, file=paste(opt$bgout,'.rda',sep=""))
+}
