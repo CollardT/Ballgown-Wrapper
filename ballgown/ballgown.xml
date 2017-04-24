@@ -127,7 +127,7 @@
 		#end for
 
 		## Run the R script with the location of the linked files and the name for outpot file
-		ballgown.R --directory $output.files_path --outputtranscript $output --outputgenes $outputgn --texpression $trexpression --phendat $phendata $bgo
+		ballgown.R --directory $output.files_path --outputtranscript $output --outputgenes $outputgn --texpression $trexpression --phendat $phendata --bgout $bgo
 	</command>
   <inputs>
     <param name="e_data" type="data" multiple="true" format="tabular" label="Exon-level expression measurements" help="One row per exon. See below for more details."/>
@@ -137,13 +137,12 @@
 		<param name="i2t" type="data" multiple="true" format="tabular" label="Introns-transcripts mapping" help="Table with two columns, i_id and t_id, denoting which introns belong to which transcripts. See below for more details."/>
 		<param name="samples_names" type="data" optional="true" multiple="false" format="tabular" label="File names for samples" help="Optional. Use in case that the names for the analysed samples cannot be extracted from the filenames."/>
     <param argument="--phendat" name="phendata" type="data" format="csv" label="phenotype data" />
-    <param argument="--texpression" name="trexpression" type="float" value="0.5" label="minimal transcript expression to appear in the results" />
-    <param argument="--bgout" name="bgo" type="boolean" truevalue="--bgout $bgof" falsevalue="" label="ballgown object" />
+    <param argument="--texpression" name="trexpression" type="float" value="0.5" label="minimal transcript expression to appear in the results"/>
   </inputs>
   <outputs>
-    <data name="bgof" format="rda" file="ballgown_object.rda" />
-    <data name="output" format="csv" file="output_transcript.csv"/>
-    <data name="outputgn" format="csv" file="output_genes.csv"/>
+    <data name="bgo" format="rda" file="ballgown_object.rda" label="${tool.name} on ${on_string}: ballgown object (R data file)"/>
+    <data name="output" format="csv" file="output_transcript.csv" label="${tool.name} on ${on_string}: transcripts expression (tabular)"/>
+    <data name="outputgn" format="csv" file="output_genes.csv" label="${tool.name} on ${on_string}: genes expression (tabular)"/>
   </outputs>
   <tests>
   </tests>
@@ -196,23 +195,33 @@ The input for this tools consists on 5 files for each sample in your experiment:
 
 '''TIP''' *Note* Here's an example of a good phenotype data file for your expirement.
 
-+--------------+-------+-------+
-|ids           |var 1  |var 2  |
-+==============+=======+=======+
-|sample 1      |value 1|value 2|
-+--------------+-------+-------+
-|sample 2      |value 2|value 1|
-+--------------+-------+-------+
-|sample 3      |value 1|value 2|
-+--------------+-------+-------+
-|sample 4      |value 2|value 1|
-+--------------+-------+-------+
++--------------+-------------------------+-------------------------+---+
+|ids           |experimental variable 1  |experimental variable 2  |...|
++==============+=========================+=========================+===+
+|sample 1      |value 1                  |value 2                  |...|
++--------------+-------------------------+-------------------------+---+
+|sample 2      |value 2                  |value 1                  |...|
++--------------+-------------------------+-------------------------+---+
+|sample 3      |value 1                  |value 2                  |...|
++--------------+-------------------------+-------------------------+---+
+|sample 4      |value 2                  |value 1                  |...|
++--------------+-------------------------+-------------------------+---+
+|...           |value 1                  |value 2                  |...|
++--------------+-------------------------+-------------------------+---+
 
 .. class:: infomark
 
 *Note* The minimal transcript expression is a number used to filter the transcripts that
 are less or not expressed in our samples when compared to the genome
 
+-----------------------
+**Outputs**
+-----------------------
+This tool has 3 outputs:
+
+- **transcripts expression** : this is a csv file containing all the transcripts that are expressed above the transcripts expression value
+- **genes expression** : this is a csv file containing all the genes that are expressed above the transcripts expression value
+- **Ballgown object** : this is the ballgown object created during the process. This file can be re-used later for further analysis in a R console.
 ----
 
 **Authors**: Théo Collard [SLU Global Bioinformatics Centre], Rafael Hernández de Diego [SLU Global Bioinformatics Centre], and Tomas Klingström [SLU Global Bioinformatics Centre]
