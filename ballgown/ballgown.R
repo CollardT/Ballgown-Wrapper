@@ -36,7 +36,7 @@ setwd(opt$dir)
 
 if (all(phendata$ids == list.files(".")) != TRUE)
 {
-  cat("Your phenotype data table does not match the samples names. ")
+  stop("Your phenotype data table does not match the samples names. ")
 }
 
 # Creation of the ballgown object based on data

@@ -209,6 +209,7 @@ The input for this tools consists on 5 files for each sample in your experiment:
 |...           |value 1                  |value 2                  |...|
 +--------------+-------------------------+-------------------------+---+
 
+
 .. class:: infomark
 
 *Note* The minimal transcript expression is a number used to filter the transcripts that
@@ -217,17 +218,18 @@ are less or not expressed in our samples when compared to the genome
 -----------------------
 **Outputs**
 -----------------------
+
 This tool has 3 outputs:
 
 - **transcripts expression** : this is a csv file containing all the transcripts that are expressed above the transcripts expression value
 - **genes expression** : this is a csv file containing all the genes that are expressed above the transcripts expression value
 - **Ballgown object** : this is the ballgown object created during the process. This file can be re-used later for further analysis in a R console.
+
 ----
 
 **Authors**: Théo Collard [SLU Global Bioinformatics Centre], Rafael Hernández de Diego [SLU Global Bioinformatics Centre], and Tomas Klingström [SLU Global Bioinformatics Centre]
 
 Sources are available at https://github.com/CollardT/Ballgown-Wrapper
-
 
   </help>
 </tool>
