@@ -11,7 +11,7 @@ This repository contains the following :
 ### Changes and objectives
 - [x] Making the wrapper
 - [x] Making the wrapper function properly on galaxy
-- [ ] Cleaning up the code
-- [ ] Adding options
+- [x] Cleaning up the code
+- [x] Adding options
 - [ ] Tutorial on how to install to make a wrapper for a tool
 - [ ] Tutorial on how to add a custom tool to galaxy
