@@ -14,4 +14,3 @@ This repository contains the following :
 - [x] Cleaning up the code
 - [x] Adding options
 - [ ] Tutorial on how to install to make a wrapper for a tool
-- [ ] Tutorial on how to add a custom tool to galaxy
