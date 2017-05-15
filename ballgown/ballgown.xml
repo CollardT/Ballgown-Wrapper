@@ -145,6 +145,17 @@
     <data name="outputgn" format="csv" file="output_genes.csv" label="${tool.name} on ${on_string}: genes expression (tabular)"/>
   </outputs>
   <tests>
+    <test>
+      <param name="e_data" value="e_data.ctab" fdata="tabular"/>
+      <param name="i_data" value="i_data.ctab" fdata="tabular"/>
+      <param name="t_data" value="t_data.ctab" fdata="tabular"/>
+      <param name="e2t" value="e2t.ctab" fdata="tabular"/>
+      <param name="i2t" value="i2t.ctab" fdata="tabular"/>
+      <param name="phendata" value="pdata.csv" fdata="tabular"/>
+      <output name="outputgn" file="genes_expression(tabular).csv" ftype="csv"/>
+      <output name="output" file="transcripts_expression(tabular).csv" ftype="csv"/>
+      <output name="bgo" file="ballgown_object.rda" ftype="rda"/>
+    </test>
   </tests>
   <help>
 
