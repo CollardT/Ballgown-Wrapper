@@ -140,9 +140,9 @@
     <param argument="--texpression" name="trexpression" type="float" value="0.5" label="minimal transcript expression to appear in the results"/>
   </inputs>
   <outputs>
-    <data name="bgo" format="rda" file="ballgown_object.rda" label="${tool.name} on ${on_string}: ballgown object (R data file)"/>
-    <data name="output" format="csv" file="output_transcript.csv" label="${tool.name} on ${on_string}: transcripts expression (tabular)"/>
-    <data name="outputgn" format="csv" file="output_genes.csv" label="${tool.name} on ${on_string}: genes expression (tabular)"/>
+    <data name="bgo" format="rda" label="${tool.name} on ${on_string}: ballgown object (R data file)"/>
+    <data name="output" format="csv" label="${tool.name} on ${on_string}: transcripts expression (tabular)"/>
+    <data name="outputgn" format="csv" label="${tool.name} on ${on_string}: genes expression (tabular)"/>
   </outputs>
   <tests>
     <test>
