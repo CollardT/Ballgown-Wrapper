@@ -146,11 +146,26 @@
   </outputs>
   <tests>
     <test>
-      <param name="e_data" value="e_data.ctab"/>
-      <param name="i_data" value="i_data.ctab"/>
-      <param name="t_data" value="t_data.ctab"/>
-      <param name="e2t" value="e2t.ctab"/>
-      <param name="i2t" value="i2t.ctab" />
+      <param name="e_data"/>
+        <collection>
+          <element name="e_data" value="e_data.ctab"/>
+        </collection>
+      <param name="i_data"/>
+        <collection>
+          <element name="i_data" value="i_data.ctab"/>
+        </collection>
+      <param name="t_data"/>
+        <collection>
+          <element name="i_data" value="t_data.ctab"/>
+        </collection>
+      <param name="e2t"/>
+        <collection>
+          <element name="e2t" value="e2t.ctab"/>
+        </collection>
+      <param name="i2t"/>
+        <collection>
+          <element name="i2t" value="i2t.ctab"/>
+        </collection>
       <param name="phendata" value="pdata.csv"/>
       <output name="outputgn" file="genes_expression(tabular).csv"/>
       <output name="output" file="transcripts_expression(tabular).csv"/>
