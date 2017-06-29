@@ -320,4 +320,7 @@ This tool has 3 outputs:
 Sources are available at https://github.com/CollardT/Ballgown-Wrapper
 
   </help>
+  <citations>
+    <citation type="doi">doi:10.1038/nprot.2016.095</citation>
+  </citations>
 </tool>
